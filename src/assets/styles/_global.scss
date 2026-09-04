@@ -1,0 +1,29 @@
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
+}
+
+app-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+app-footer {
+  flex: 0 0 auto;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.container {
+  max-width: $container-width;
+  margin: 0 auto;
+}
