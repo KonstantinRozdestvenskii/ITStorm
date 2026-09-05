@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {OwlOptions, SlidesOutputData} from "ngx-owl-carousel-o";
+import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {RequestPopupComponent} from "../../shared/components/order-popup/request-popup.component";
+import {Router} from "@angular/router";
+import {PopupService} from "../../shared/services/popup.service";
 
 
 @Component({
@@ -31,9 +35,16 @@ export class MainComponent implements OnInit {
     this.activeIndex = event.startPosition ?? 0;
   }
 
-  constructor() { }
+  @ViewChild('popup') popup!: TemplateRef<ElementRef>;
+  private dialogRef: MatDialogRef<any> | null = null;
+
+  constructor(private popupService: PopupService) { }
 
   ngOnInit(): void {
+  }
+
+  public openRequestPopup(type: string) {
+    this.popupService.openPopup(type);
   }
 
 }

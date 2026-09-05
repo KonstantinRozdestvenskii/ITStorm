@@ -83,6 +83,20 @@ input {
   }
 }
 
+.invalid-feedback {
+  margin-top: 3px;
+  color: #BF0303;
+  font-size: 14px;
+  line-height: 130%;
+}
+
+.error-message {
+  margin-top: 10px;
+  color: #BF0303;
+  font-size: 14px;
+  line-height: 130%;
+}
+
 input[type='checkbox'] {
   appearance: none;
   -webkit-appearance: none;
@@ -137,4 +151,9 @@ input[type='checkbox'] {
 .mat-menu-item {
   font-family: Montserrat, sans-serif;
   font-weight: 400;
+}
+
+.mat-dialog-container {
+  padding: 0 !important;
+  border-radius: 10px !important;
 }

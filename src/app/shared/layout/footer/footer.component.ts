@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {PopupService} from "../../services/popup.service";
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private popupService: PopupService) { }
 
   ngOnInit(): void {
+  }
+
+  public openRequestPopup(type: string) {
+    this.popupService.openPopup(type);
   }
 
 }

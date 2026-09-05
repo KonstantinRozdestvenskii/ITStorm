@@ -1,0 +1,61 @@
+@import "../../../../assets/styles/variables";
+
+.request-popup {
+  padding: 94px 152px;
+  width: 727px;
+  height: 489px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 2px solid #709FDC;
+  background-color: #FFF;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    cursor: pointer;
+  }
+  .request-popup-title {
+    max-width: 406px;
+    color: $light-blue-color;
+    text-align: center;
+    font-family: Lora, sans-serif;
+    font-size: 38px;
+    font-weight: 400;
+    line-height: 130%;
+
+    margin-bottom: 20px;
+  }
+
+  .success-message {
+    color: #1E1A2B;
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 40px;
+  }
+
+  .success-action {
+    width: 74px;
+    margin: 0 auto;
+  }
+
+  .request-popup-form {
+    width: 422px;
+    .request-popup-input {
+      margin-bottom: 5px;
+    }
+
+    .request-popup-action {
+      .button {
+        width: 100%;
+        margin-top: 15px;
+      }
+    }
+  }
+}
