@@ -6,7 +6,7 @@
       <form class="auth-form" [formGroup]="loginForm" (ngSubmit)="login()">
         <div class="auth-inputs">
           <div class="auth-input">
-            <input type="text" placeholder="Электронная почта"
+            <input class="input" type="text" placeholder="Электронная почта"
                    [ngStyle]="{'border-color': loginForm.get('email')?.invalid
                    && (loginForm.get('email')?.touched || loginForm.get('email')?.dirty) ? 'red' : ''}"
                    formControlName="email">
@@ -22,7 +22,7 @@
             </div>
           </div>
           <div class="auth-input">
-            <input type="password" placeholder="Пароль"
+            <input class="input" type="password" placeholder="Пароль"
                    [ngStyle]="{'border-color': loginForm.get('password')?.invalid
                    && (loginForm.get('password')?.touched || loginForm.get('password')?.dirty) ? 'red' : ''}"
                    formControlName="password">

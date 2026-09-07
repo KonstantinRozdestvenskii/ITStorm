@@ -13,8 +13,8 @@ export class PopupService {
   constructor(private dialog: MatDialog,
               private router: Router) { }
 
-  public openPopup(type: string) {
-    this.dialogRef = this.dialog.open(RequestPopupComponent, {data: {type: type}});
+  public openPopup(type: string, service: string | null = null) {
+    this.dialogRef = this.dialog.open(RequestPopupComponent, {data: {type: type, service: service}});
     this.dialogRef.backdropClick()
       .subscribe(() => {
         this.router.navigate(['/']);

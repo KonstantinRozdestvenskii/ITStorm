@@ -19,19 +19,15 @@
     <button class="button button-small" (click)="close()">Окей</button>
   </div>
   <form class="request-popup-form" *ngIf="!isSuccess" [formGroup]="requestForm" (ngSubmit)="sendRequest()">
-    <div class="request-popup-input" *ngIf="data.type === requestType.order">
-      <input type="text" placeholder="Услуга"
-             [ngStyle]="{'border-color': requestForm.get('service')?.invalid
-             && (requestForm.get('service')?.touched || requestForm.get('service')?.dirty) ? 'red' : ''}"
-             formControlName="service">
-      <div class="invalid-feedback" *ngIf="requestForm.get('service')?.invalid
-                && (requestForm.get('service')?.touched || requestForm.get('service')?.dirty)
-                && requestForm.get('service')?.errors?.['required']">
-        Введите название услуги
-      </div>
+    <div class="request-popup-select" *ngIf="data.type === requestType.order">
+      <select class="input" name="service-select" formControlName="service">
+        <option *ngFor="let service of services" [value]="service.value">
+          {{ service.label }}
+        </option>
+      </select>
     </div>
     <div class="request-popup-input">
-      <input type="text" placeholder="Ваше имя"
+      <input class="input" type="text" placeholder="Ваше имя"
              [ngStyle]="{'border-color': requestForm.get('name')?.invalid
              && (requestForm.get('name')?.touched || requestForm.get('name')?.dirty) ? 'red' : ''}"
              formControlName="name">
@@ -42,7 +38,7 @@
       </div>
     </div>
     <div class="request-popup-input">
-      <input type="text" placeholder="Ваш номер телефона"
+      <input class="input" type="text" placeholder="Ваш номер телефона"
              [ngStyle]="{'border-color': requestForm.get('phoneNumber')?.invalid
              && (requestForm.get('phoneNumber')?.touched || requestForm.get('phoneNumber')?.dirty) ? 'red' : ''}"
              formControlName="phoneNumber">

@@ -1,10 +1,11 @@
 @import "../../../assets/styles/variables";
+@import "../../../assets/styles/mixins";
 
 .offers {
   padding-bottom: 60px;
 
   .container {
-    .carousel {
+    .offers-carousel {
       position: relative;
 
       .move-backward, .move-forward {
@@ -116,5 +117,310 @@
       }
     }
 
+  }
+}
+
+.services {
+  padding: 60px 0;
+
+  .container {
+
+    .services-title {
+      margin-bottom: 40px;
+    }
+
+    .services-items {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .services-item {
+        width: 290px;
+        height: 498px;
+        display: flex;
+        flex-direction: column;
+
+        .services-item-image {
+          margin-bottom: 15px;
+        }
+
+        .services-item-title {
+          margin-bottom: 10px;
+          color: $light-blue-color;
+          font-size: 20px;
+          font-weight: 500;
+        }
+
+        .services-item-description {
+          flex-grow: 1;
+        }
+
+        .services-item-action {
+          margin-top: 10px;
+          display: flex;
+          align-items: center;
+
+          .services-item-price {
+            width: 117px;
+            margin-right: 10px;
+            color: $light-blue-color;
+            font-size: 20px;
+            font-weight: 600;
+          }
+
+          .button {
+            width: 163px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.info {
+  padding: 60px 0;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+
+    .info-text {
+      .info-title {
+        margin-bottom: 20px;
+      }
+
+      .info-description {
+        max-width: 633px;
+        color: #1E1A2B;
+        font-size: 14px;
+        line-height: 130%;
+        margin-bottom: 40px;
+
+        span {
+          font-weight: 500;
+        }
+      }
+
+      .info-advantages {
+        .info-advantages-title {
+          margin-bottom: 20px;
+          color: $light-blue-color;
+          font-family: Lora, sans-serif;
+          font-size: 26px;
+          font-weight: 400;
+          line-height: 130%;
+        }
+
+        .info-advantages-items {
+          display: grid;
+          grid-template-columns: repeat(2, 316px);
+          gap: 20px 71px;
+
+          .info-advantages-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .info-advantages-item-number {
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              background-color: #B9D5FD;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+
+              span {
+                color: $light-blue-color;
+                font-family: Lora, sans-serif;
+                font-size: 50px;
+                font-weight: 500;
+
+                margin-bottom: 15px;
+              }
+            }
+
+            .info-advantages-item-text {
+              width: 256px;
+              color: #1E1A2B;
+              font-size: 14px;
+              line-height: 130%;
+
+              span {
+                font-weight: 500;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.articles {
+  padding: 60px 0;
+
+  .container {
+    .articles-title {
+      margin-bottom: 40px;
+    }
+
+    .articles-items {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 40px;
+    }
+
+    .articles-link {
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        gap: 14px;
+
+        span {
+          color: $light-blue-color;
+          font-size: 20px;
+          font-style: normal;
+
+          border-bottom: 2px solid transparent;
+        }
+
+        &:hover {
+          span {
+            border-bottom: 2px solid $light-blue-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+.reviews {
+  padding: 60px 0;
+
+  .container {
+    .reviews-title {
+      margin-bottom: 20px;
+    }
+
+    .reviews-carousel {
+      position: relative;
+      .move-backward, .move-forward {
+        position: absolute;
+        top: calc(50% - 9px);
+        z-index: 5;
+        cursor: pointer;
+      }
+
+      .move-backward {
+        left: -15px;
+      }
+
+      .move-forward {
+        right: -15px;
+      }
+
+      .review {
+        height: 267px;
+        border-radius: 5px;
+        border: 2px solid $light-blue-color;
+        background-color: #FFF;
+        padding: 30px;
+
+        .review-head {
+          display: flex;
+          align-items: center;
+          gap: 26px;
+
+          margin-bottom: 15px;
+
+          .review-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+
+          .review-name {
+            color: $light-blue-color;
+            font-size: 18px;
+            font-weight: 600;
+          }
+        }
+
+        .review-text {
+          color: $dark-blue-color;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 140%;
+        }
+      }
+    }
+  }
+}
+
+.contacts {
+  padding: 60px 0 120px 0;
+
+  .container {
+    display: flex;
+    gap: 26px;
+
+    .contacts-map {
+      width: 607px;
+      height: 438px;
+      border-radius: 5px;
+    }
+
+    .contacts-info {
+      .contacts-title {
+        @include head-lora-38;
+        margin-bottom: 20px;
+      }
+
+      .contacts-info-item {
+        margin-bottom: 20px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .contacts-info-item-title {
+          color: $light-blue-color;
+          font-size: 20px;
+          font-weight: 500;
+          margin-bottom: 10px;
+        }
+
+        .contacts-info-item-data {
+          color: $dark-blue-color;
+          font-size: 14px;
+          line-height: 130%;
+
+          a {
+            color: $dark-blue-color;
+            font-size: 14px;
+            border-bottom: 2px solid transparent;
+
+            &:hover {
+              border-bottom: 2px solid $dark-blue-color;
+            }
+          }
+        }
+
+        .contacts-info-item-social {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+        }
+      }
+    }
   }
 }

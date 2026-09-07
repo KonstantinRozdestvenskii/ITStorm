@@ -3,19 +3,22 @@ import { CommonModule } from '@angular/common';
 import {RequestPopupComponent} from './components/order-popup/request-popup.component';
 import {MatDialog} from "@angular/material/dialog";
 import {FormBuilder, ReactiveFormsModule} from "@angular/forms";
+import { ArticleCardComponent } from './components/article-card/article-card.component';
 
 
 
 @NgModule({
   declarations: [
-    RequestPopupComponent
+    RequestPopupComponent,
+    ArticleCardComponent
   ],
   imports: [
     ReactiveFormsModule,
     CommonModule
   ],
-  exports: [
-    RequestPopupComponent
-  ]
+    exports: [
+        RequestPopupComponent,
+        ArticleCardComponent
+    ]
 })
 export class SharedModule { }

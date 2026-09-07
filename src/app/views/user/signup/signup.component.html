@@ -6,7 +6,7 @@
       <form class="auth-form" [formGroup]="signupForm" (ngSubmit)="signup()">
         <div class="auth-inputs">
           <div class="auth-input">
-            <input type="text" placeholder="Электронная почта"
+            <input class="input" type="text" placeholder="Электронная почта"
                    [ngStyle]="{'border-color': signupForm.get('email')?.invalid
                    && (signupForm.get('email')?.touched || signupForm.get('email')?.dirty) ? 'red' : ''}"
                    formControlName="email">
@@ -21,7 +21,7 @@
             </div>
           </div>
           <div class="auth-input">
-            <input type="text" placeholder="Ваше имя"
+            <input class="input" type="text" placeholder="Ваше имя"
                    [ngStyle]="{'border-color': signupForm.get('name')?.invalid
                    && (signupForm.get('name')?.touched || signupForm.get('name')?.dirty) ? 'red' : ''}"
                    formControlName="name">
@@ -36,7 +36,7 @@
             </div>
           </div>
           <div class="auth-input">
-            <input type="password" placeholder="Пароль"
+            <input class="input" type="password" placeholder="Пароль"
                    [ngStyle]="{'border-color': signupForm.get('password')?.invalid
                    && (signupForm.get('password')?.touched || signupForm.get('password')?.dirty) ? 'red' : ''}"
                    formControlName="password">

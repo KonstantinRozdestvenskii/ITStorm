@@ -10,7 +10,7 @@ import {RequestService} from "../../services/request.service";
 import {Observable} from "rxjs";
 
 @Component({
-  selector: 'app-request-popup',
+  selector: 'request-popup',
   templateUrl: './request-popup.component.html',
   styleUrls: ['./request-popup.component.scss']
 })
@@ -27,9 +27,16 @@ export class RequestPopupComponent implements OnInit {
   isErrorShow: boolean = false;
   isSuccess: boolean = false;
 
+  public services = [
+    { value: 'website-creation', label: 'Создание сайтов' },
+    { value: 'promotion', label: 'Продвижение' },
+    { value: 'advertisement', label: 'Реклама' },
+    { value: 'copywriting', label: 'Копирайтинг' }
+  ];
+
   constructor(
     private dialogRef: MatDialogRef<RequestPopupComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { type: string },
+    @Inject(MAT_DIALOG_DATA) public data: { type: string, service?: string },
     private fb: FormBuilder,
     private requestService: RequestService) {
     if (data.type === RequestTypeType.order) {
@@ -43,6 +50,10 @@ export class RequestPopupComponent implements OnInit {
     if (this.data.type === RequestTypeType.order) {
       this.requestForm.get('service')?.setValidators([Validators.required]);
     }
+
+    if (this.data.service) {
+      this.requestForm.patchValue({ service: this.data.service });
+    }
   }
 
   close(): void {
@@ -51,14 +62,23 @@ export class RequestPopupComponent implements OnInit {
 
   sendRequest(): void {
     if (this.requestForm.valid && this.requestForm.value.name && this.requestForm.value.phoneNumber) {
-      this.requestService.sendRequest(this.requestForm.value.name,
-        this.requestForm.value.phoneNumber, this.data.type, this.requestForm.value.service).subscribe({
+      const formValue = this.requestForm.value;
+
+      const selectedService = this.services.find(s => s.value === formValue.service);
+      const serviceLabel = selectedService ? selectedService.label : formValue.service;
+
+      this.requestService.sendRequest(
+        formValue.name,
+        formValue.phoneNumber,
+        this.data.type,
+        serviceLabel
+      ).subscribe({
         next: (data: DefaultResponseType) => {
           if (data.error) {
             this.isErrorShow = true;
+          } else {
+            this.isSuccess = true;
           }
-
-          this.isSuccess = true;
         },
         error: () => {
           this.isErrorShow = true;

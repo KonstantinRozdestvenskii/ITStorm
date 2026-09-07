@@ -1,0 +1,66 @@
+@import "../../../../assets/styles/variables";
+
+.article-card {
+  width: 292px;
+  height: 571px;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  .article-card-category {
+    position: absolute;
+    top: 10px;
+    right: 9px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 18px;
+    border-radius: 5px;
+    background-color: #FFF;
+
+    color: $light-blue-color;
+    font-size: 11px;
+
+  }
+
+  .article-card-image {
+    width: 291px;
+    height: 291px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .article-card-title {
+    color: $light-blue-color;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 130%;
+    margin-bottom: 20px;
+  }
+
+  .article-card-description {
+    color: $dark-blue-color;
+    font-size: 14px;
+    line-height: 130%;
+    flex-grow: 1;
+  }
+
+  .article-card-action {
+    margin-top: 20px;
+
+    a {
+      color: $light-blue-color;
+      font-size: 16px;
+      font-weight: 400;
+      text-decoration-line: underline;
+    }
+  }
+}
