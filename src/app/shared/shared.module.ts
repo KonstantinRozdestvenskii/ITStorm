@@ -4,6 +4,7 @@ import {RequestPopupComponent} from './components/order-popup/request-popup.comp
 import {MatDialog} from "@angular/material/dialog";
 import {FormBuilder, ReactiveFormsModule} from "@angular/forms";
 import { ArticleCardComponent } from './components/article-card/article-card.component';
+import {RouterModule} from "@angular/router";
 
 
 
@@ -14,7 +15,8 @@ import { ArticleCardComponent } from './components/article-card/article-card.com
   ],
   imports: [
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
     exports: [
         RequestPopupComponent,

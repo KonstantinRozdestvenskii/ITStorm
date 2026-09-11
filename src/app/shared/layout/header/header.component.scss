@@ -14,26 +14,6 @@
       margin-right: 100px;
     }
 
-    .nav-menu {
-      ul {
-        list-style: none;
-        display: flex;
-        align-items: center;
-        gap: 30px;
-        li a {
-          color: #071739;
-          font-size: 16px;
-          font-weight: 500;
-          border-bottom: 1px solid transparent;
-          transition: all linear 0.2s;
-
-          &:hover {
-            border-bottom: 2px solid $dark-blue-color;
-          }
-        }
-      }
-    }
-
     .header-phone-number {
       margin-left: 257px;
       color: $light-blue-color;

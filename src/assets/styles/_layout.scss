@@ -15,8 +15,8 @@
       border-bottom: 1px solid transparent;
       transition: all linear 0.2s;
 
-      &:hover {
-        border-bottom: 2px solid $dark-blue-color;
+      &:hover, &.active {
+        color: $light-blue-color;
       }
     }
   }

@@ -15,6 +15,7 @@ import {AuthInterceptor} from "./core/auth.interceptor";
 import {CarouselModule} from "ngx-owl-carousel-o";
 import {SharedModule} from "./shared/shared.module";
 import {MatDialogModule} from "@angular/material/dialog";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {MatDialogModule} from "@angular/material/dialog";
     HttpClientModule,
     CarouselModule,
     SharedModule,
+    RouterModule,
     AppRoutingModule,
   ],
   providers: [

@@ -6,4 +6,8 @@ export type ArticleType = {
   date: string;
   category: string;
   url: string;
+
+  text?: string;
+  comments?: string[];
+  commentsCount?: number;
 }
