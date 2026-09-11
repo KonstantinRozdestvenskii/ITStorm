@@ -51,6 +51,26 @@
       margin-bottom: 5px;
     }
 
+    .request-popup-input.phone {
+      .input {
+        /* Скрываем маску, когда показан placeholder */
+        &:placeholder-shown {
+          color: transparent; /* скрываем маску */
+        }
+
+        /* Показываем placeholder с нормальным цветом */
+        &::placeholder {
+          color: #A8ABA7; /* цвет вашего placeholder */
+        }
+
+        /* Когда поле в фокусе или есть значение - показываем маску */
+        &:focus,
+        &:not(:placeholder-shown) {
+          color: $light-blue-color; /* цвет текста ввода */
+        }
+      }
+    }
+
     .request-popup-action {
       .button {
         width: 100%;

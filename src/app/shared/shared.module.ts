@@ -5,6 +5,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {FormBuilder, ReactiveFormsModule} from "@angular/forms";
 import { ArticleCardComponent } from './components/article-card/article-card.component';
 import {RouterModule} from "@angular/router";
+import {NgxMaskModule} from "ngx-mask";
 
 
 
@@ -16,6 +17,7 @@ import {RouterModule} from "@angular/router";
   imports: [
     ReactiveFormsModule,
     CommonModule,
+    NgxMaskModule.forRoot(),
     RouterModule
   ],
     exports: [

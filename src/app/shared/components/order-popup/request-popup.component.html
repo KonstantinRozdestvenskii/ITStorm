@@ -39,13 +39,21 @@
     </div>
     <div class="request-popup-input">
       <input class="input" type="text" placeholder="Ваш номер телефона"
+             mask="(000) 000-00-00"
+             prefix="+7"
+             [dropSpecialCharacters]="true"
              [ngStyle]="{'border-color': requestForm.get('phoneNumber')?.invalid
-             && (requestForm.get('phoneNumber')?.touched || requestForm.get('phoneNumber')?.dirty) ? 'red' : ''}"
+         && (requestForm.get('phoneNumber')?.touched || requestForm.get('phoneNumber')?.dirty) ? 'red' : ''}"
              formControlName="phoneNumber">
       <div class="invalid-feedback" *ngIf="requestForm.get('phoneNumber')?.invalid
-                && (requestForm.get('phoneNumber')?.touched || requestForm.get('phoneNumber')?.dirty)
-                && requestForm.get('phoneNumber')?.errors?.['required']">
+            && (requestForm.get('phoneNumber')?.touched || requestForm.get('phoneNumber')?.dirty)
+            && requestForm.get('phoneNumber')?.errors?.['required']">
         Введите номер телефона
+      </div>
+      <div class="invalid-feedback" *ngIf="requestForm.get('phoneNumber')?.invalid
+            && (requestForm.get('phoneNumber')?.touched || requestForm.get('phoneNumber')?.dirty)
+            && requestForm.get('phoneNumber')?.errors?.['minlength']">
+        Введите полный номер телефона
       </div>
     </div>
     <div class="request-popup-action">

@@ -14,6 +14,8 @@ import {HttpErrorResponse} from "@angular/common/http";
 })
 export class SignupComponent implements OnInit {
 
+  public passwordShow: boolean = false;
+
   public signupForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     name: ['', [Validators.required, Validators.pattern(/^[А-ЯЁ][а-яё]*( [А-ЯЁ][а-яё]*)*$/)]],
@@ -66,6 +68,10 @@ export class SignupComponent implements OnInit {
           }
         });
     }
+  }
+
+  tooglePasswordShow(): void {
+    this.passwordShow = !this.passwordShow;
   }
 
 }

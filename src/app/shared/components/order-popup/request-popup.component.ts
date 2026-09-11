@@ -21,7 +21,7 @@ export class RequestPopupComponent implements OnInit {
   public requestForm: FormGroup = this.fb.group({
     service: [''],
     name: ['', Validators.required],
-    phoneNumber: ['', Validators.required]
+    phoneNumber: ['', [Validators.required, Validators.minLength(10)]]
   });
 
   isErrorShow: boolean = false;

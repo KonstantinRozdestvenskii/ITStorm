@@ -17,9 +17,34 @@
     .auth-input {
       width: 100%;
       margin-bottom: 5px;
+      position: relative;
 
       &:last-child {
         margin-bottom: 10px;
+      }
+
+      &.password {
+        .input {
+          padding-right: 40px;
+        }
+      }
+
+
+
+      svg {
+
+        position: absolute;
+        top: 15px;
+        right: 10px;
+
+        cursor: pointer;
+
+        fill: $light-blue-color;
+
+        path {
+          stroke: $light-blue-color;
+          fill: $light-blue-color;
+        }
       }
     }
   }
