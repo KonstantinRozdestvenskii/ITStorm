@@ -7,13 +7,15 @@ import { ArticleCardComponent } from './components/article-card/article-card.com
 import {RouterModule} from "@angular/router";
 import {NgxMaskModule} from "ngx-mask";
 import { PolicyComponent } from '../views/user/policy/policy.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 
 
 @NgModule({
   declarations: [
     RequestPopupComponent,
-    ArticleCardComponent
+    ArticleCardComponent,
+    LoaderComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -21,9 +23,10 @@ import { PolicyComponent } from '../views/user/policy/policy.component';
     NgxMaskModule.forRoot(),
     RouterModule
   ],
-    exports: [
-        RequestPopupComponent,
-        ArticleCardComponent
-    ]
+  exports: [
+    RequestPopupComponent,
+    ArticleCardComponent,
+    LoaderComponent
+  ]
 })
 export class SharedModule { }

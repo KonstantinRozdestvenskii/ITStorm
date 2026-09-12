@@ -12,6 +12,8 @@ import {ActionType} from "../../../../types/action.type";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {HttpErrorResponse} from "@angular/common/http";
+import {LoaderService} from "../../../shared/services/loader.service";
+import {finalize} from "rxjs";
 
 @Component({
   selector: 'app-article',
@@ -39,6 +41,7 @@ export class ArticleComponent implements OnInit {
               private commentService: CommentsService,
               private activatedRoute: ActivatedRoute,
               private authService: AuthService,
+              private loaderService: LoaderService,
               private router: Router,
               private _snackbar: MatSnackBar,
               private fb: FormBuilder) {
@@ -97,6 +100,11 @@ export class ArticleComponent implements OnInit {
 
             if (this.isLoggedIn) {
               this.commentService.getUserActionsForArticle(this.article.id)
+                .pipe(
+                  // finalize(() => {
+                  //   this.loaderService.hide();
+                  // })
+                )
                 .subscribe({
                   next: (actionsData: DefaultResponseType | ActionType[]) => {
                     if ((actionsData as DefaultResponseType).error !== undefined) {
@@ -119,6 +127,7 @@ export class ArticleComponent implements OnInit {
                   },
                   error: () => {
                     this._snackbar.open('Ошибка загрузки действий пользователя');
+
                   }
                 });
             } else {

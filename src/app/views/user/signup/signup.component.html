@@ -36,7 +36,7 @@
             </div>
           </div>
           <div class="auth-input password">
-            <input class="input" type="password" placeholder="Пароль"
+            <input class="input" [type]="passwordShow ? 'text' : 'password'" placeholder="Пароль"
                    [ngStyle]="{'border-color': signupForm.get('password')?.invalid
                    && (signupForm.get('password')?.touched || signupForm.get('password')?.dirty) ? 'red' : ''}"
                    formControlName="password">
