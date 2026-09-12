@@ -6,6 +6,7 @@ import {FormBuilder, ReactiveFormsModule} from "@angular/forms";
 import { ArticleCardComponent } from './components/article-card/article-card.component';
 import {RouterModule} from "@angular/router";
 import {NgxMaskModule} from "ngx-mask";
+import { PolicyComponent } from '../views/user/policy/policy.component';
 
 
 

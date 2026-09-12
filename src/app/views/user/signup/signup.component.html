@@ -67,7 +67,7 @@
                    && (signupForm.get('agree')?.touched || signupForm.get('agree')?.dirty) ? 'red' : ''}"
                  formControlName="agree">
           <label for="agree">
-            Я принимаю <a href="#">условия пользовательского соглашения</a> и <a href="#">даю согласие
+            Я принимаю <a routerLink="/policy" fragment="user-agreement">условия пользовательского соглашения</a> и <a routerLink="/policy" fragment="data-processing">даю согласие
             на обработку персональных данных</a>.
           </label>
         </div>

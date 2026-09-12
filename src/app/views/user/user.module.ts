@@ -6,12 +6,14 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {SharedModule} from "../../shared/shared.module";
+import {PolicyComponent} from "./policy/policy.component";
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    PolicyComponent
   ],
   imports: [
     CommonModule,
