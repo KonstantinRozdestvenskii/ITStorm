@@ -1,13 +1,14 @@
 import {Component, ElementRef, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {OwlOptions, SlidesOutputData} from "ngx-owl-carousel-o";
-import {MatDialog, MatDialogRef} from "@angular/material/dialog";
-import {RequestPopupComponent} from "../../shared/components/order-popup/request-popup.component";
-import {Router} from "@angular/router";
+import {MatDialogRef} from "@angular/material/dialog";
+import {ActivatedRoute} from "@angular/router";
 import {PopupService} from "../../shared/services/popup.service";
 import {ServiceType} from "../../../types/service.type";
 import {ArticleType} from "../../../types/article.type";
 import {ArticleService} from "../../shared/services/article.service";
 import {DefaultResponseType} from "../../../types/default-response.type";
+import {ViewportScroller} from "@angular/common";
+import {Subscription} from "rxjs";
 
 
 @Component({
@@ -117,8 +118,12 @@ export class MainComponent implements OnInit {
   @ViewChild('popup') popup!: TemplateRef<ElementRef>;
   private dialogRef: MatDialogRef<any> | null = null;
 
+  private fragmentSubscription!: Subscription;
+
   constructor(private popupService: PopupService,
-              private articleService: ArticleService) {
+              private articleService: ArticleService,
+              private activatedRoute: ActivatedRoute,
+              private viewportScroller: ViewportScroller) {
   }
 
   ngOnInit(): void {
@@ -131,6 +136,25 @@ export class MainComponent implements OnInit {
         this.articles = (data as ArticleType[]);
       })
 
+  }
+
+  ngAfterViewInit() {
+    // Подписываемся на изменение фрагмента (якоря) в URL
+    this.fragmentSubscription = this.activatedRoute.fragment.subscribe(fragment => {
+      if (fragment) {
+        // Даем браузеру 100-200мс на завершение отрисовки DOM и применение стилей
+        setTimeout(() => {
+          this.viewportScroller.scrollToAnchor(fragment);
+        }, 150); // 150мс обычно достаточно, можно увеличить до 300мс при медленной загрузке
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    // Обязательно отписываемся во избежание утечек памяти
+    if (this.fragmentSubscription) {
+      this.fragmentSubscription.unsubscribe();
+    }
   }
 
   public openRequestPopup(type: string, service?: string) {

@@ -5,6 +5,10 @@
   padding: 40px 0;
   font-size: 16px;
   font-weight: 500;
+  position: fixed;
+  width: 100%;
+  background-color: white;
+  z-index: 9;
 
   .container {
     display: flex;
