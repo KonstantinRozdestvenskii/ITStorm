@@ -85,6 +85,11 @@ export class ArticleComponent implements OnInit {
     });
   }
 
+  getShareUrl(): string {
+    const baseUrl = window.location.origin; // или из environment
+    return `${baseUrl}/article/${this.article.url}`;
+  }
+
   private loadComments(): void {
     if (this.article.commentsCount && this.article.commentsCount > 0) {
       this.commentService.getComments(this.article.id, this.commentsOffset)

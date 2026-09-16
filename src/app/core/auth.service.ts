@@ -20,6 +20,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) {
     this.isLogged = !!localStorage.getItem(this.accessTokenKey);
+    this.isLogged$.next(this.isLogged);
   }
 
   login(email: string, password: string, rememberMe: boolean): Observable<DefaultResponseType | LoginResponseType> {

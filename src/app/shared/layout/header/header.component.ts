@@ -5,7 +5,6 @@ import {AuthService} from "../../../core/auth.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 import {UserService} from "../../services/user.service";
-import {LoginResponseType} from "../../../../types/login-response.type";
 import {UserInfoType} from "../../../../types/user-info.type";
 
 @Component({
@@ -26,16 +25,35 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    if (this.authService.getIsLoggedIn()) {
+      this.isLoggedIn = true;
+      this.loadUserInfo(); // Если да - сразу грузим имя
+    }
+
     this.authService.isLogged$.subscribe((isLoggedIn: boolean) => {
       this.isLoggedIn = isLoggedIn;
+
       if (isLoggedIn) {
-        this.userService.getUserInfo()
-          .subscribe((data: DefaultResponseType | UserInfoType) => {
-            if ((data as DefaultResponseType).error !== undefined) {
-              throw new Error((data as DefaultResponseType).message);
-            }
-            this.userName = (data as UserInfoType).name;
-          });
+        this.loadUserInfo();
+      } else {
+        this.userName = ''; // Очищаем имя при выходе
+      }
+    });
+  }
+
+  // Выносим логику запроса в отдельный метод, чтобы не дублировать код
+  private loadUserInfo(): void {
+    this.userService.getUserInfo().subscribe({
+      next: (data: DefaultResponseType | UserInfoType) => {
+        if ((data as DefaultResponseType).error !== undefined) {
+          this.doLogout();
+          return;
+        }
+        this.userName = (data as UserInfoType).name;
+      },
+      error: () => {
+        this.doLogout();
       }
     });
   }
