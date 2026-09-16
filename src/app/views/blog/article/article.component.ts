@@ -86,7 +86,15 @@ export class ArticleComponent implements OnInit {
   }
 
   getShareUrl(): string {
-    const baseUrl = window.location.origin + '/' + window.location.pathname; // или из environment
+
+    const origin = window.location.origin;
+    const pathname = window.location.pathname;
+
+    // На GitHub Pages pathname = /repository-name/ или /repository-name/article/...
+    // Нам нужно взять только первую часть пути (имя репозитория)
+    const pathParts = pathname.split('/').filter(Boolean);
+
+    const baseUrl = `${origin}/${pathParts[0]}`
     return `${baseUrl}/article/${this.article.url}`;
   }
 
