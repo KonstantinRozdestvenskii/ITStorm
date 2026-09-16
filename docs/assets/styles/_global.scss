@@ -1,0 +1,172 @@
+@import "variables";
+@import "mixins";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
+  scroll-behavior: smooth;
+}
+
+app-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+app-footer {
+  flex: 0 0 auto;
+}
+
+main {
+  flex: 1 0 auto;
+  padding-top: 132px;
+}
+
+.container {
+  max-width: $container-width;
+  margin: 0 auto;
+}
+
+.title {
+  @include head-lora-38;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button {
+  padding: 15px;
+  box-sizing: border-box;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  background-color: $light-blue-color;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #5b81b1;
+  }
+
+  &:disabled {
+    background-color: #709FDCCC;
+    cursor: not-allowed;
+  }
+
+  color: #FFF;
+  font-size: 16px;
+  font-weight: 500;
+
+  &.button-small {
+    padding: 10px;
+    font-size: 12px;
+  }
+}
+
+.input {
+  width: 100%;
+  height: 53px;
+  padding: 10px 20px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  border: 2px solid $light-blue-color;
+  background-color: #FFF;
+
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: $light-blue-color;
+  outline: none;
+
+  &::placeholder {
+    color: #A8ABA7;
+  }
+}
+
+.invalid-feedback {
+  margin-top: 3px;
+  color: #BF0303;
+  font-size: 14px;
+  line-height: 130%;
+}
+
+.error-message {
+  margin-top: 10px;
+  color: #BF0303;
+  font-size: 14px;
+  line-height: 130%;
+}
+
+input[type='checkbox'] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  width: 14px;
+  height: 14px;
+  min-width: 14px;
+  border: 1px solid $dark-blue-color;
+  border-radius: 3px;
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+
+  // SVG галочка через background-image
+  &:checked {
+    border-color: $dark-blue-color;
+    background-color: transparent;
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='9' viewBox='0 0 10 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.88908 0.600098L4.15224 8.1001L0.599609 3.36326' stroke='%23071739' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 10px 9px;
+  }
+
+  // Hover состояние (только для не-disabled и не-checked)
+  &:hover:not(:checked):not(:disabled) {
+    border-color: $dark-blue-color;
+  }
+
+  // Focus состояние (доступность)
+  &:focus {
+    outline: none;
+  }
+
+  // Disabled состояние
+  &:disabled {
+    border-color: $dark-blue-color;
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  // Active состояние (нажатие)
+  &:active:not(:disabled) {
+    transform: scale(0.95);
+  }
+}
+
+img {
+  object-fit: cover;
+}
+
+.mat-menu-item {
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
+}
+
+.mat-dialog-container {
+  padding: 0 !important;
+  border-radius: 10px !important;
+}
