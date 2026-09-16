@@ -87,15 +87,12 @@ export class ArticleComponent implements OnInit {
 
   getShareUrl(): string {
 
-    const origin = window.location.origin;
-    const pathname = window.location.pathname;
+    const vkUrl = 'https://vk.com/share.php?url=';
+    const pageUrl = window.location.href;
 
-    // На GitHub Pages pathname = /repository-name/ или /repository-name/article/...
-    // Нам нужно взять только первую часть пути (имя репозитория)
-    const pathParts = pathname.split('/').filter(Boolean);
+    const sharedUrl = vkUrl + pageUrl;
 
-    const baseUrl = `${origin}/${pathParts[0]}`
-    return `${baseUrl}/article/${this.article.url}`;
+    return sharedUrl;
   }
 
   private loadComments(): void {
