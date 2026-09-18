@@ -315,11 +315,11 @@
       }
 
       .move-backward {
-        left: -15px;
+        left: -25px;
       }
 
       .move-forward {
-        right: -15px;
+        right: -25px;
       }
 
       .review {
@@ -328,6 +328,7 @@
         border: 2px solid $light-blue-color;
         background-color: #FFF;
         padding: 30px;
+        box-sizing: border-box;
 
         .review-head {
           display: flex;

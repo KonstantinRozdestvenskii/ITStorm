@@ -1,25 +1,30 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {HttpErrorResponse} from "@angular/common/http";
 import {DefaultResponseType} from "../../../../types/default-response.type";
 import {AuthService} from "../../../core/auth.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {Router} from "@angular/router";
+import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {UserService} from "../../services/user.service";
 import {UserInfoType} from "../../../../types/user-info.type";
+import {filter, map, Subscription} from "rxjs";
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
 
   public isLoggedIn: boolean = false;
   public userName: string = '';
 
+  public activeFragment: string | null = null;
+  public fragmentSubscription: Subscription | null = null;
+
   constructor(private authService: AuthService,
               private userService: UserService,
               private _snackbar: MatSnackBar,
+              private activatedRoute: ActivatedRoute,
               private router: Router) {
     this.isLoggedIn = this.authService.getIsLoggedIn();
   }
@@ -40,6 +45,18 @@ export class HeaderComponent implements OnInit {
         this.userName = ''; // Очищаем имя при выходе
       }
     });
+
+    this.fragmentSubscription = this.router.events
+      .pipe(
+        filter(event => event instanceof NavigationEnd),
+        map(() => this.activatedRoute.snapshot.fragment)
+      )
+      .subscribe(fragment => {
+        this.activeFragment = fragment;
+      });
+
+    this.activeFragment = this.activatedRoute.snapshot.fragment;
+
   }
 
   // Выносим логику запроса в отдельный метод, чтобы не дублировать код
@@ -77,5 +94,10 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
+  ngOnDestroy() {
+    if (this.fragmentSubscription) {
+      this.fragmentSubscription.unsubscribe();
+    }
+  }
 
 }

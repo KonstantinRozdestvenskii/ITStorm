@@ -6,19 +6,19 @@
     <nav class="menu">
       <ul>
         <li>
-          <a routerLink="/" fragment="services">Услуги</a>
+          <a routerLink="/" fragment="services" [class.active]="activeFragment === 'services'">Услуги</a>
         </li>
         <li>
-          <a routerLink="/" fragment="info">О нас</a>
+          <a routerLink="/" fragment="info" [class.active]="activeFragment === 'info'">О нас</a>
         </li>
         <li>
           <a routerLink="/blog" routerLinkActive="active">Статьи</a>
         </li>
         <li>
-          <a routerLink="/" fragment="reviews">Отзывы</a>
+          <a routerLink="/" fragment="reviews" [class.active]="activeFragment === 'reviews'">Отзывы</a>
         </li>
         <li>
-          <a routerLink="/" fragment="contacts">Контакты</a>
+          <a routerLink="/" fragment="contacts" [class.active]="activeFragment === 'contacts'">Контакты</a>
         </li>
       </ul>
     </nav>
